@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style media="screen">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,900&display=swap'); 
+    * {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body {
+    background-color: #ecf0f1;
+}
+.gallery-container {
+    width:100%;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    margin-top: 50px;
+    grid-gap:20px;
+
+   
+}
+.gallery-item {
+    flex-basis: 32.7%;
+    margin-bottom: 6px;
+    opacity: .85;
+    cursor: pointer;
+    
+}
+.gallery-item:hover {
+     opacity: 1; 
+    box-shadow: 0px 0px 20px 3px #00000042; 
+    transform: scale(1.25);
+    z-index: 1;
+}
+.gallery-item img {
+     width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+   transition: .1s ease box-shadow;
+}
+.gallery-content {
+    font-size: .8em;
+}
+
+.lightbox {
+    position: fixed;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    top: 0;
+    left: 0;
+}
+.lightbox-content {
+    position: relative;
+    width: 65%;
+    height: 58%;
+    margin: 5% auto;
+    margin-top: 100px;
+}
+.lightbox-content img {
+    border-radius: 3px;
+    border: 6px solid white;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 9px;
+    top: 45%;
+    cursor: pointer;
+}
+.lightbox-prev {
+    left: 0;
+}
+.lightbox-next {
+    right: 0;
+}
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    opacity: .8;
+}
+.container{
+    background-color:white;
+    width: 90%;
+    height: 800px;
+    max-width:1000px;
+    margin:0 auto;
+    box-shadow: 0px 0px 60px 7px #00000042;
+    padding:60px 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    text-align: center;
+    padding-left: 110px;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.header h1{
+    color:rgb(207, 157, 92);
+    margin-right:60px;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+  </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 class="logo">IMAGE GALLERY</h1>
+    </div>
+<div class="gallery-container">
+    <div class="gallery-item" data-index="1">
+        <img id="img1" src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb" onmouseover="display(this.id)">
+    </div>
+    <div class="gallery-item" data-index="2">
+        <img id="img2" src="https://images.pexels.com/photos/5969/wood-nature-forest-bridge.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb" onmouseover="display(this.id)">
+    </div>
+    <div class="gallery-item" data-index="3">
+        <img id="img3" src="https://images.pexels.com/photos/531321/pexels-photo-531321.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb" onmouseover="display(this.id)">
+    </div>
+    <div class="gallery-item" data-index="4">
+        <img  id="img4"src="https://images.pexels.com/photos/373920/pexels-photo-373920.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" onmouseover="display(this.id)">
+    </div>
+    <div class="gallery-item" data-index="5">
+        <img  id="img5"src="https://images.pexels.com/photos/164241/pexels-photo-164241.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" onmouseover="display(this.id)">
+    </div>
+    <div class="gallery-item" data-index="6">
+        <img  id="img6"src="https://images.pexels.com/photos/417054/pexels-photo-417054.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" onmouseover="display(this.id)">
+    </div>
+    <div class="gallery-item" data-index="7">
+        <img  id="img7"src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" onmouseover="display(this.id)">
+    </div>
+    <div class="gallery-item" data-index="8">
+        <img  id="img8"src="https://images.pexels.com/photos/38326/pexels-photo-38326.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" onmouseover="display(this.id)">
+    </div>
+    <div class="gallery-item" data-index="9">
+        <img  id="img9"src="https://images.pexels.com/photos/266691/pexels-photo-266691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" onmouseover="display(this.id)">
+    </div>
+</div>
+</div>
+<script>
+const galleryItem = document.getElementsByClassName("gallery-item");
+const lightBoxContainer = document.createElement("div");
+const lightBoxContent = document.createElement("div");
+const lightBoxImg = document.createElement("img");
+const lightBoxPrev = document.createElement("div");
+const lightBoxNext = document.createElement("div");
+
+lightBoxContainer.classList.add("lightbox");
+lightBoxContent.classList.add("lightbox-content");
+lightBoxPrev.classList.add("fa", "fa-angle-left", "lightbox-prev");
+lightBoxNext.classList.add("fa", "fa-angle-right", "lightbox-next");
+
+lightBoxContainer.appendChild(lightBoxContent);
+lightBoxContent.appendChild(lightBoxImg);
+lightBoxContent.appendChild(lightBoxPrev);
+lightBoxContent.appendChild(lightBoxNext);
+document.body.appendChild(lightBoxContainer);
+
+let index = 1;
+
+function showLightBox(n) {
+    if (n > galleryItem.length) {
+        index = 1;
+    } else if (n < 1) {
+        index = galleryItem.length;
+    }
+    let imageLocation = galleryItem[index-1].children[0].getAttribute("src");
+    lightBoxImg.setAttribute("src", imageLocation);
+}
+
+function currentImage() {
+    lightBoxContainer.style.display = "block";
+
+    let imageIndex = parseInt(this.getAttribute("data-index"));
+    showLightBox(index = imageIndex);
+}
+for (let i = 0; i < galleryItem.length; i++) {
+    galleryItem[i].addEventListener("click", currentImage);
+}
+
+function slideImage(n) {
+    showLightBox(index += n);
+}
+function prevImage() {
+    slideImage(-1);
+}
+function nextImage() {
+    slideImage(1);
+}
+lightBoxPrev.addEventListener("click", prevImage);
+lightBoxNext.addEventListener("click", nextImage);
+
+function closeLightBox() {
+    if (this === event.target) {
+        lightBoxContainer.style.display = "none";
+    }
+}
+lightBoxContainer.addEventListener("click", closeLightBox);
+
+function display(id)
+       {
+       
+    var img=document.getElementById(id);
+    var value="Item type:jpg file  Dimensions:1366*768 Size:76KB Date taken:16/11/2022 11:47AM";
+    img.setAttribute('title',value);
+        
+       }
+</script>
+</body>
+</html>
